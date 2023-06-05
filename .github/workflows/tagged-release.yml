@@ -23,7 +23,7 @@ jobs:
           
       - name: Get tar file
         id: get-tar-name
-        run: echo "::set-output name=fileName::$(find . -type f -iname "*.tar.bz2" -printf "%f\n")"
+        run: echo "fileName=$(find . -type f -iname "*.tar.bz2" -printf "%f\n")" >> $GITHUB_OUTPUT
           
       - name: Fetch tar file
         id: get-tar-path
@@ -67,7 +67,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           body: |
-            **git tag: ${{  github.ref_name }}**
+            <br>
+            **git tag: ${{  github.ref_name }}**<br>
             ${{ steps.upload-main-asset.outputs.browser_download_url }}
             md5: `${{ steps.generate-checksums.outputs.md5 }}`
             sha1: `${{ steps.generate-checksums.outputs.sha1 }}`
