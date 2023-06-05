@@ -67,7 +67,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           body: |
-            
+            <!-- File Information -->
             **git tag: ${{  github.ref_name }}**<br>
             ${{ steps.upload-main-asset.outputs.browser_download_url }}
             md5: `${{ steps.generate-checksums.outputs.md5 }}`
