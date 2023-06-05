@@ -42,9 +42,9 @@ jobs:
       - name: Generate Checksums
         id: generate-checksums
         run : |
-          md5sum **/*tar.bz2 | tee md5sum.txt
-          sha1sum **/*tar.bz2 | tee sha1sum.txt
-          sha256sum **/*tar.bz2 | tee sha256sum.txt
+          md5sum *tar.bz2 | tee md5sum.txt
+          sha1sum *tar.bz2 | tee sha1sum.txt
+          sha256sum *tar.bz2 | tee sha256sum.txt
           echo "md5=$(cut -f1 -d' ' md5sum.txt)" >> $GITHUB_OUTPUT
           echo "sha1=$(cut -f1 -d' ' sha1sum.txt)" >> $GITHUB_OUTPUT
           echo "sha256=$(cut -f1 -d' ' sha256sum.txt)" >> $GITHUB_OUTPUT
